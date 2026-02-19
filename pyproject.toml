@@ -1,27 +1,22 @@
-[build-system]
-requires = ["setuptools>=68", "wheel"]
-build-backend = "setuptools.backends.legacy:build"
-
 [project]
 name = "stackback"
-version = "0.0.1"
-description = "AI-powered terminal error fixer inspired by thefuck and rebound"
-readme = "README.md"
-license = {text = "MIT"}
+version = "0.0.4"
+description = "AI-powered terminal error fixer with Stack Overflow integration"
 requires-python = ">=3.9"
 dependencies = [
+    "click>=8.0.0",
     "typer>=0.12",
-    "rich>=13",
-    "prompt-toolkit>=3",
-    "openai>=1",
-    "anthropic>=0.25",
-    "google-generativeai>=0.7",
+    "rich>=13.0.0",
+    "openai>=1.0.0",
     "requests>=2.31",
 ]
 
-[project.scripts]
-sb = "stackback.main:app"
-stackback = "stackback.main:app"
-
 [project.optional-dependencies]
-dev = ["pytest>=8", "pytest-mock>=3"]
+dev = ["pytest>=7.0", "pytest-cov"]
+
+[project.scripts]
+sb = "stackback.main:main"
+stackback = "stackback.main:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
